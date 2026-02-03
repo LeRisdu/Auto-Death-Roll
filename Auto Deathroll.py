@@ -7,7 +7,7 @@ Player = []
 Dice = 100
 PlayerTurn = -1 #Est -1 car 1 est ajouté en début de boucle while. Si on ajoute 1 à la fin alors le joueur change en sortant de la boucle et en annonçant le perdant.
 RollDelay = 2
-FakeThrow = 9
+FakeThrow = 3
 DelayDivider = 0
 
 #Définit le temps des faux lancés, nécessaire à l'effet de roulement du dé (FakeDice).
@@ -37,14 +37,14 @@ while Dice > 1:
     time.sleep(0.5)
     for k in range(1, FakeThrow+1) :
         Delay = k*DelayFraction
-        FakeDice = random.randint(1, Dice+1)
+        FakeDice = random.randint(1, Dice)
         if len(Player[PlayerTurn]) <= 4:
             print(Player[PlayerTurn] +": \t\t" + str(FakeDice), flush=True, end="\r")
         else:
             print(Player[PlayerTurn] +": \t" + str(FakeDice), flush=True, end="\r")
         time.sleep(Delay)
         
-    Dice = random.randint(1, Dice+1)
+    Dice = random.randint(1, Dice)
     if len(Player[PlayerTurn]) <= 4:
         print(Player[PlayerTurn] +": \t\t" + str(Dice) + " !")
     else:
